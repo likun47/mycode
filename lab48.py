@@ -1,11 +1,15 @@
+#!/usr/bin/env python3
+
 import time
 
+# the greeting message
 def welcome_message():
-    print("Welcome to the Pizza Recommendation Generator!")
+    print("Welcome to the Pizza Order system!")
     time.sleep(1)
     print("Answer a few questions and we'll recommend the perfect pizza for you!")
     time.sleep(1)
 
+#return crust type after custer select a curst.
 def get_crust_type():
     while True:
         try:
@@ -17,13 +21,15 @@ def get_crust_type():
         except:
             print("Sorry, something went wrong. Please try again.")
 
+
+# return a topping list after customer select one and one more options
 def get_toppings():
     toppings = []
     while True:
         try:
             topping = input("What toppings do you like on your pizza? (type 'done' when finished) ")
-            if topping.lower() == 'done':
-                if len(toppings) == 0:
+            if topping.lower() == 'done': #in case you finish the selection but the function still running. 
+                if len(toppings) == 0: 
                     print("Sorry, you need to choose at least one topping. Please try again.")
                 else:
                     return toppings
@@ -35,6 +41,7 @@ def get_toppings():
         except:
             print("Sorry, something went wrong. Please try again.")
 
+#size selection
 def get_size():
     while True:
         try:
@@ -46,12 +53,15 @@ def get_size():
         except:
             print("Sorry, something went wrong. Please try again.")
 
+
+#print out your selections.
 def recommend_pizza(crust, toppings, size):
     print("Based on your preferences, we recommend a " + size + " " + crust + " crust pizza with the following toppings:")
     for topping in toppings:
         print("- " + topping)
     print("Enjoy your pizza!")
 
+#main function
 def main():
     welcome_message()
     crust_type = get_crust_type()
